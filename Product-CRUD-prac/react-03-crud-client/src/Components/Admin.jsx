@@ -18,7 +18,7 @@ const Admin = () => {
         <div className="row">
           <div className="col-md-8">
             <table className="table table-hover">
-              <thead className="bg-dark text-white">
+              <thead className="bg-dark">
                 <tr>
                   {/* <th>ID</th> */}
                   <th>Product</th>
