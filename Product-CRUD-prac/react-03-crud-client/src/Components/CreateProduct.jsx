@@ -18,6 +18,22 @@ const CreateProduct = () => {
     setProduct({
       ...product,[event.target.name] : event.target.value
     })
+    console.log(event.target.value)
+  }
+
+  let changeImageToStr=async(event)=>{
+    let imageFile = event.target.files[0];
+    // console.log(event)
+    let reader = new FileReader(imageFile)
+    reader.readAsDataURL(imageFile)
+    reader.addEventListener('load',()=>{
+      if (reader.result) {
+        setProduct({
+          ...product,
+          image: reader.result
+        });
+      }
+    })
   }
 
   let createHandler = (event)=>{
@@ -48,7 +64,7 @@ const CreateProduct = () => {
                     <input type="text" name="name" placeholder='Product Name' className='form-control' onChange={productData} />
                   </div>
                   <div className="form-group">
-                    <input type="text" name="image" placeholder='Image' className='form-control' onChange={productData} />
+                    <input type="file" name="image" placeholder='Image' className='form-control' onChange={changeImageToStr} />
                   </div>
                   <div className="form-group">
                     <input type="number" name="price" placeholder='Price' className='form-control' onChange={productData} />
