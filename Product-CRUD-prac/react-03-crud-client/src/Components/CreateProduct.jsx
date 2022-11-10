@@ -38,7 +38,7 @@ const CreateProduct = () => {
 
   let createHandler = (event)=>{
     event.preventDefault()
-    let url = "http://127.0.0.1:5000/api/products/"
+    let url = "http://localhost:3000/products"
     Axios.post(url,product).then((resp)=>{
       setSubmitted(true)
       console.log(resp)
@@ -75,7 +75,7 @@ const CreateProduct = () => {
                   <div className="form-group">
                     <textarea name="info" cols="52" rows="3" placeholder='Description' className='form-control' onChange={productData}></textarea>
                   </div>
-                  <button className="btn btn-warning">Create Product</button>
+                  <button className="btn btn-info">Create Product</button>
                 </form>
               </div>
             </div>

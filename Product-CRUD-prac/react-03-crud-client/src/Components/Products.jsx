@@ -5,7 +5,7 @@ import Axios from 'axios'
 const Products = () => {
   let [products, setProducts] = useState([])
   useEffect(()=>{
-        Axios.get('http://127.0.0.1:5000/api/products').then((res)=>{
+        Axios.get('http://localhost:3000/products').then((res)=>{
           setProducts(res.data)
         }).catch(()=>{})
   },[])
@@ -32,7 +32,7 @@ const Products = () => {
 
             })
           }
-        </> : <h1>No Products...</h1>
+        </> : <h1>***No Products***</h1>
       }
         </div>
       </div>
