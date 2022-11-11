@@ -18,7 +18,6 @@ const Admin = () => {
     Axios.delete(`http://localhost:3000/products/${id}`)
     .then((res)=>{
       navigate(0)
-      // setProducts(res.data)
     })
     .catch(()=>{})
   }
@@ -52,7 +51,7 @@ const Admin = () => {
                           <td>{product.price}</td>
                           <td>{product.qty}</td>
                           <td>
-                            <Link to='/update' className='btn btn-warning'>Edit <i className='fa fa-pen'></i></Link>&nbsp;
+                            <Link to={`/update/${product.id}`} className='btn btn-warning'>Edit <i className='fa fa-pen'></i></Link>&nbsp;
                             <Link to='/admin' className='btn btn-danger'  onClick={deleteProduct.bind(this,product.id)}>Del <i className='fa fa-trash'></i></Link>
                           </td>
                         </tr>

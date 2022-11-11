@@ -5,6 +5,7 @@ import CreateProduct from './Components/CreateProduct'
 import Products from './Components/Products'
 import Update from './Components/Update'
 import Navbar from './Navbar/Navbar'
+import './App.css'
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
           <Route path='/createproduct' element={<CreateProduct />} />
           <Route path='/products' element={<Products />} />
           <Route path='/admin' element={<Admin />} />
-          <Route path='/update' element={<Update />} />
+          <Route path='/update/:id' element={<Update />} />
         </Routes>
       </Router>
     </>

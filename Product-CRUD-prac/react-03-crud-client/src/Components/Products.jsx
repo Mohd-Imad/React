@@ -21,15 +21,17 @@ const Products = () => {
             products.map((product)=>{
               return <div className="col-md-3">
                   <div className="card">
-                    <div className="card-header">
-                      <img src={product.image} height='150px' alt="No pic" />
+                    <div className="card-header bg-info">
+                      <center>
+<img src={product.image} height='150px' alt="No pic" /></center>
                     </div>
                     <div className="card-body">
-                      <li className="list-group-item">{product.name}</li>
+                      <li className="list-group-item">Name : {product.name}</li>
+                      <li className="list-group-item">Price : {product.price}</li>
+                      <li className="list-group-item">QTY : {product.qty}</li>
                     </div>
                   </div>
                 </div>
-
             })
           }
         </> : <h1>***No Products***</h1>
