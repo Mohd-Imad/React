@@ -1,23 +1,35 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, /* useNavigate */ } from 'react-router-dom'
+import Spinner from 'react-bootstrap/Spinner'
+
 
 const Admin = () => {
   let [products, setProducts] = useState([])
 
-  let navigate = useNavigate()
+  // let navigate = useNavigate()
+  let [loading, setLoading] = useState(null)
 
+  
   useEffect(()=>{
-    Axios.get('http://localhost:3000/products').then((res)=>{
+    setLoading(<Spinner animation='border' variant='danger'/>)
+    getAllProducts()
+  },[]) 
+
+  let getAllProducts = ()=>{
+    Axios.get('http://localhost:3000/products1').then((res)=>{
       setProducts(res.data)
-    }).catch(()=>{})
-  },[])
+    }).catch(()=>{
+      setLoading(<h1 className='text-danger'>***No Products***</h1>)
+    })
+  }
 
   let deleteProduct = (id)=>{
     Axios.delete(`http://localhost:3000/products/${id}`)
     .then((res)=>{
-      navigate(0)
+      // navigate(0)
+      getAllProducts()
     })
     .catch(()=>{})
   }
@@ -57,7 +69,7 @@ const Admin = () => {
                         </tr>
                       })
                     }
-                  </> : <><h1>***No Products***</h1></>
+                  </> : <>{loading}</>
                 }
               </tbody>
             </table>

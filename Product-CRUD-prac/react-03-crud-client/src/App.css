@@ -12,19 +12,20 @@
     padding: 0;
     background: linear-gradient(180deg,rgb(86, 80, 80), rgb(164, 45, 45));
     height: 60px;
+    padding: 0 20px;
 }
 
 #brand{
     font-size: 1.5rem;
     font-weight: 600;
     text-shadow: 3px 3px 8px #fff;
-    padding-left: 20px
+    padding: 0.5rem;
 }
 
 #brand:hover{
-    /* border: 2px solid #fff; */
-    /* border-radius: 8px; */
-    /* background: linear-gradient(90deg,rgb(227, 211, 211), rgb(164, 45, 45)); */
+    border: 2px solid #fff;
+    border-radius: 8px;
+    background: linear-gradient(90deg,rgb(227, 211, 211), rgb(164, 45, 45));
     color: #000;
 }
 
@@ -32,6 +33,7 @@
     font-family: 'Roboto',sans-serif;
     font-size: 1.2rem;
     color: rgb(207, 189, 189);
+    margin-inline: 10px;
 }
 
 #link:hover,#link:focus{
