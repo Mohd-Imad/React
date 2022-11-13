@@ -7,38 +7,51 @@
     font-family: 'Kanit',sans-serif;
 }
 
-#navbar{
-    margin: 0;
-    padding: 0;
+body{
     background: linear-gradient(180deg,rgb(86, 80, 80), rgb(164, 45, 45));
-    height: 60px;
-    padding: 0 20px;
+    height: 100vh;
 }
 
-#brand{
-    font-size: 1.5rem;
+#card-create{
+    border: 3px solid #333;
+    border-radius: 15px;
+}
+
+#head-create h1{
+    color:rgb(203, 79, 79);
+    font-size: 3em;
     font-weight: 600;
-    text-shadow: 3px 3px 8px #fff;
-    padding: 0.5rem;
+    text-align: center;
 }
 
-#brand:hover{
-    border: 2px solid #fff;
-    border-radius: 8px;
-    background: linear-gradient(90deg,rgb(227, 211, 211), rgb(164, 45, 45));
-    color: #000;
+
+#body-create{
+    background:linear-gradient(90deg, rgb(164, 45, 45),rgb(86, 80, 80)); 
+    border-radius: 0 0 14px 14px;
 }
 
-#link{
-    font-family: 'Roboto',sans-serif;
+#body-create input:hover,
+#body-create input:focus,
+#body-create textarea:hover,
+#body-create textarea:focus{
+    border: 3px solid #000;
+    box-shadow:3px 3px 7px whitesmoke
+}
+
+#btn-create{
     font-size: 1.2rem;
-    color: rgb(207, 189, 189);
-    margin-inline: 10px;
+    font-weight: 700;
+    background-color: #333;
+    color:rgb(203, 79, 79); 
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
 }
 
-#link:hover,#link:focus{
-    text-decoration:wavy;
-    color: whitesmoke;
-    box-shadow: inset -3px -3px 7px #fff;
-    border: 1px solid #fff;
+#btn-create:hover{
+    font-size: 1.2rem;
+    font-weight: 700;
+    background-color: whitesmoke;
+    color:rgb(203, 79, 79); 
+    border: 2px solid rgb(207, 198, 198);
+    border-radius: 10px;
 }

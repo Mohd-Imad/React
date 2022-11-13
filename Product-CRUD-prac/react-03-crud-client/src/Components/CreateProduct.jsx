@@ -54,11 +54,11 @@ const CreateProduct = () => {
           submitted ? <><Navigate to='/products' /></> : <>
             <div className="row">
               <div className="col-md-5">
-                <div className="card">
-                  <div className="card-header bg-info text-white">
+                <div id='card-create' className="card">
+                  <div id='head-create' className="card-header">
                     <h1>Create Product</h1>
                   </div>
-                  <div className="card-body">
+                  <div id='body-create' className="card-body">
                     <form onSubmit={createHandler}>
                       <div className="form-group">
                         <input type="text" name="name" placeholder='Product Name' className='form-control' onChange={productData} />
@@ -75,7 +75,7 @@ const CreateProduct = () => {
                       <div className="form-group">
                         <textarea name="info" cols="52" rows="3" placeholder='Description' className='form-control' onChange={productData}></textarea>
                       </div>
-                      <button className="btn btn-info">Create Product</button>
+                      <button id='btn-create' className="btn">Create Product</button>
                     </form>
                   </div>
                 </div>

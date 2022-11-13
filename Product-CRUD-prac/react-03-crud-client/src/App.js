@@ -6,6 +6,7 @@ import Products from './Components/Products'
 import Update from './Components/Update'
 import Navbar from './Navbar/Navbar'
 import './App.css'
+import './Navbar.css'
 
 const App = () => {
   return (

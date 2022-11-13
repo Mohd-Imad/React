@@ -1,0 +1,15 @@
+----react-level----
+npm i react-router-dom
+npm i axios
+npm i react-bootstrap
+
+
+----redux-level----
+npm i redux
+npm i react-redux
+npm i @redux-devtools/extension
+
+
+----redux-thunk level----
+npm i redux-thunk
+npm i redux-logger
