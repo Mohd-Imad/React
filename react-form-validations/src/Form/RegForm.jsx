@@ -1,39 +1,65 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 
 const RegForm = () => {
 
-    let formValidation = (vent)=>{
+    let [formValues, setFormValues] = useState({
+        name: "",
+        mobile: "",
+        email: "",
+        password: "",
+    })
 
+    let [formErr, setFormErr] = useState({})
+
+    let [submitted, setSubmitted] = useState(false)
+
+
+
+    let changeInputHandler = (event) => {
+        setFormValues({ ...formValues, [event.target.name]: event.target.value })
     }
+
+    let submitFormHandler = (event) => {
+        event.preventDefault()
+        setFormErr(formValidation(formValues))
+        setSubmitted(true)
+    }
+
+    let formValidation = (values) => {
+        const errors = {};
+        const pattern = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/;
+        if (!values.name) {
+            errors.name = 'Enter Name'
+        }
+    }
+
     return (
         <>
             <div className="container mt-5">
+                <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-5">
                         <div className="card">
                             <div className="card-header text-center bg-primary text-white">
                                 <h1>Registration Details</h1>
                             </div>
                             <div className="card-body">
-                                <div className="form-group">
-                                    <input type="text" placeholder="First Name" className='form-control' />
-                                </div>
-                                <div className="form-group">
-                                    <input type="text" placeholder="Last Name" className='form-control' />
-                                </div>
-                                <div className="form-group">
-                                    <input type="number" placeholder="Mobile" className='form-control' />
-                                </div>
-                                <div className="form-group">
-                                    <input type="email" placeholder="Email" className='form-control' />
-                                </div>
-                                <div className="form-group">
-                                    <input type="password" placeholder="Password" className='form-control' />
-                                </div>
-                                <div className="form-group">
-                                    <input type="password" placeholder="Re-Enter Password" className='form-control' />
-                                </div>
-                                <input type="submit" value="Register" className='btn btn-warning' />
+                                <form onSubmit={submitFormHandler}>
+                                    <div className="form-group">
+                                        <input type="text" name='name' placeholder="Name" className='form-control' value={formValues.name} onChange={changeInputHandler} />
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="number" name='mobile' placeholder="Mobile" className='form-control' value={formValues.mobile} onChange={changeInputHandler} />
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="email" name='email' placeholder="Email" className='form-control' value={formValues.email} onChange={changeInputHandler} />
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="password" name='password' placeholder="Password" className='form-control' value={formValues.password} onChange={changeInputHandler} />
+                                    </div>
+                                    <input type="submit" value="Register" className='btn btn-warning' />
+                                </form>
                             </div>
                         </div>
                     </div>
