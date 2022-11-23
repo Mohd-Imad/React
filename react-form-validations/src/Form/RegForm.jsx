@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const RegForm = () => {
 
@@ -26,12 +26,8 @@ const RegForm = () => {
         setSubmitted(true)
     }
 
-    let formValidation = (values) => {
-        const errors = {};
-        const pattern = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/;
-        if (!values.name) {
-            errors.name = 'Enter Name'
-        }
+    let formValidation = ()=>{
+
     }
 
     return (
