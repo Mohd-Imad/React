@@ -32,7 +32,7 @@ const Update = () => {
     console.log(event.target.value)
   }
 
-  let changeImage = async (event) => {
+  let changeImage =  (event) => {
     let imageFile = event.target.files[0];
     // console.log(event)
     let reader = new FileReader(imageFile)

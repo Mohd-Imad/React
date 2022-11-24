@@ -9,7 +9,9 @@
 
 body{
     background: linear-gradient(180deg,rgb(86, 80, 80), rgb(164, 45, 45));
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
+    background-size: cover;
 }
 
 #card-create{
@@ -28,6 +30,7 @@ body{
 #body-create{
     background:linear-gradient(90deg, rgb(164, 45, 45),rgb(86, 80, 80)); 
     border-radius: 0 0 14px 14px;
+    
 }
 
 #body-create input:hover,

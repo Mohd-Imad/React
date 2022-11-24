@@ -21,7 +21,7 @@ const CreateProduct = () => {
     console.log(event.target.value)
   }
 
-  let changeImageToStr = async (event) => {
+  let changeImageToStr = (event) => {
     let imageFile = event.target.files[0];
     // console.log(event)
     let reader = new FileReader(imageFile)

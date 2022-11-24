@@ -18,7 +18,7 @@ const Admin = () => {
   },[]) 
 
   let getAllProducts = ()=>{
-    Axios.get('http://localho+st:3000/products').then((res)=>{
+    Axios.get('http://localhost:3000/products').then((res)=>{
       setProducts(res.data)
     }).catch(()=>{
       setLoading(<h1 className='text-danger'>***No Products***</h1>)
