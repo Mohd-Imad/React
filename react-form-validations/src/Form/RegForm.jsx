@@ -3,31 +3,49 @@ import { useState } from 'react'
 
 const RegForm = () => {
 
-    let [formValues, setFormValues] = useState({
+    const [formValues, setFormValues] = useState({
         name: "",
         mobile: "",
         email: "",
         password: "",
     })
 
-    let [formErr, setFormErr] = useState({})
+    const [errMsg, setErrMsg] = useState({
+        nameErr : "",
+        mobileErr : "",
+        emailErr : "",
+        passwordErr : "",
+    })
 
-    let [submitted, setSubmitted] = useState(false)
 
-
-
-    let changeInputHandler = (event) => {
+    const changeInputHandler = (event) => {
         setFormValues({ ...formValues, [event.target.name]: event.target.value })
     }
 
-    let submitFormHandler = (event) => {
-        event.preventDefault()
-        setFormErr(formValidation(formValues))
-        setSubmitted(true)
+    const formValidation = ()=>{
+        //Name validation
+        if(formValues.name === ""){
+            setErrMsg({...errMsg,nameErr:"Please enter Name"})
+        }
+        else if(formValues.name.length <= 4 || formValues.name.length >10){
+            setErrMsg({...errMsg,nameErr:"Name should be min 5 and max 10 characters"})
+        }
+        else{
+            setErrMsg({...errMsg,nameErr:""})
+        }
+        if(formValues.email === ""){
+            setErrMsg({...errMsg,emailErr:"Please enter Email"})
+        }
+        else{
+            setErrMsg({...errMsg,emailErr:""})
+        }
+        
     }
 
-    let formValidation = ()=>{
-
+    const submitFormHandler = (event)=>{
+        event.preventDefault()
+        console.log(formValues)
+        formValidation()
     }
 
     return (
@@ -43,16 +61,20 @@ const RegForm = () => {
                             <div className="card-body">
                                 <form onSubmit={submitFormHandler}>
                                     <div className="form-group">
-                                        <input type="text" name='name' placeholder="Name" className='form-control' value={formValues.name} onChange={changeInputHandler} />
+                                        <input type="text" name='name' placeholder="Name" className='form-control'  onChange={changeInputHandler} />
+                                        <p className='text-danger'>{errMsg.nameErr}</p>
                                     </div>
                                     <div className="form-group">
-                                        <input type="number" name='mobile' placeholder="Mobile" className='form-control' value={formValues.mobile} onChange={changeInputHandler} />
+                                        <input type="number" name='mobile' placeholder="Mobile" className='form-control' onChange={changeInputHandler} />
+                                        <p className='text-danger'>{errMsg.emailErr}</p>
                                     </div>
                                     <div className="form-group">
-                                        <input type="email" name='email' placeholder="Email" className='form-control' value={formValues.email} onChange={changeInputHandler} />
+                                        <input type="email" name='email' placeholder="Email" className='form-control' onChange={changeInputHandler} />
+                                        <p className='text-danger'></p>
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" name='password' placeholder="Password" className='form-control' value={formValues.password} onChange={changeInputHandler} />
+                                        <input type="password" name='password' placeholder="Password" className='form-control' onChange={changeInputHandler} />
+                                        <p className='text-danger'></p>
                                     </div>
                                     <input type="submit" value="Register" className='btn btn-warning' />
                                 </form>
