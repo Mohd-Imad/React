@@ -23,23 +23,10 @@ const RegForm = () => {
     }
 
     const formValidation = ()=>{
-        //Name validation
-        if(formValues.name === ""){
-            setErrMsg({...errMsg,nameErr:"Please enter Name"})
-        }
-        else if(formValues.name.length <= 4 || formValues.name.length >10){
-            setErrMsg({...errMsg,nameErr:"Name should be min 5 and max 10 characters"})
-        }
-        else{
-            setErrMsg({...errMsg,nameErr:""})
-        }
-        if(formValues.email === ""){
-            setErrMsg({...errMsg,emailErr:"Please enter Email"})
-        }
-        else{
-            setErrMsg({...errMsg,emailErr:""})
-        }
-        
+        let name = formValues.name
+        let mobile = formValues.mobile
+        let email = formValues.email
+        let password = formValues.password   
     }
 
     const submitFormHandler = (event)=>{
@@ -66,15 +53,15 @@ const RegForm = () => {
                                     </div>
                                     <div className="form-group">
                                         <input type="number" name='mobile' placeholder="Mobile" className='form-control' onChange={changeInputHandler} />
-                                        <p className='text-danger'>{errMsg.emailErr}</p>
+                                        <p className='text-danger'>{errMsg.mobileErr}</p>
                                     </div>
                                     <div className="form-group">
                                         <input type="email" name='email' placeholder="Email" className='form-control' onChange={changeInputHandler} />
-                                        <p className='text-danger'></p>
+                                        <p className='text-danger'>{errMsg.emailErr}</p>
                                     </div>
                                     <div className="form-group">
                                         <input type="password" name='password' placeholder="Password" className='form-control' onChange={changeInputHandler} />
-                                        <p className='text-danger'></p>
+                                        <p className='text-danger'>{errMsg.passwordErr}</p>
                                     </div>
                                     <input type="submit" value="Register" className='btn btn-warning' />
                                 </form>
