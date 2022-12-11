@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 const RegForm = () => {
@@ -8,22 +8,32 @@ const RegForm = () => {
         mobile: "",
         email: "",
         password: "",
+        re_password: ""
     })
-    const [nameErr, setNameErr] = useState("")
-    const [mobileErr, setMobileErr] = useState("")
-    const [emailErr, setEmailErr] = useState("")
-    const [passwordErr, setPasswordErr] = useState("")
+    const [nameErr, setNameErr] = useState(null)
+    const [mobileErr, setMobileErr] = useState(null)
+    const [emailErr, setEmailErr] = useState(null)
+    const [passwordErr, setPasswordErr] = useState(null)
+    const [rePasswordErr, setRePasswordErr] = useState(null)
+    const [valid, setValid] = useState(false)
 
 
     const changeInputHandler = (event) => {
         setFormValues({ ...formValues, [event.target.name]: event.target.value })
     }
 
+    useEffect(() => {
+        if (valid === true) {
+            validateForm()
+        }
+    }, [formValues])
+
     const validateForm = () => {
         let name = formValues.name
         let mobile = formValues.mobile
         let email = formValues.email
         let password = formValues.password
+        let re_password = formValues.re_password
 
         //Name validation
         if (name === "") {
@@ -48,15 +58,15 @@ const RegForm = () => {
         }
 
         //Email validtion
-        const isEmailValid = (email) => {
-            const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return pattern.test(email);
-        };
+        /*      const isEmailValid = (email) => {
+                 const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                 return pattern.test(email);
+             }; */
 
         if (email === "") {
             setEmailErr("Please enter Email ID")
         }
-        else if (!isEmailValid(email)) {
+        else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(email)) {
             setEmailErr("Enter valid Email ID")
         }
         else {
@@ -70,21 +80,51 @@ const RegForm = () => {
         else if (password.length < 6 || password.length > 15) {
             setPasswordErr("Password must be of min 6 and max 15 characters")
         }
+        else if (!/(?=.*?[A-Z])/.test(password)) {
+            setPasswordErr("Password must have atleast 1 uppercase letter")
+        }
+        else if (!/(?=.*?[a-z])/.test(password)) {
+            setPasswordErr("Password must have atleast 1 lowercase letter")
+        }
+        else if (!/(?=.*?[0-9])/.test(password)) {
+            setPasswordErr("Password must have atleast 1 number ")
+        }
         else {
             setPasswordErr("")
         }
+
+        //Re-Password validation
+        if (re_password === "") {
+            setRePasswordErr("Please re-enter your Password")
+        }
+        else if (re_password !== password) {
+            setRePasswordErr("Password does not match")
+        }
+        else if (re_password === password) {
+            setRePasswordErr("")
+        }
+
+        //for submitting purpose when every fields are true
+        if (nameErr === "" && mobileErr === "" && emailErr === "" && passwordErr === "" && rePasswordErr === "") {
+            return true
+        }
+
     }
 
     const submitFormHandler = (event) => {
         event.preventDefault()
-        validateForm()
-        console.log(formValues)
+        setValid(true)
+        let submit = validateForm()
+        if (submit === true) {
+            alert("Form submitted successfully")
+            console.log(formValues)
+        }
     }
 
     return (
         <>
             <div className="container mt-5">
-                <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+                {/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
                 <div className="row">
                     <div className="col-md-5">
                         <div className="card">
@@ -108,6 +148,10 @@ const RegForm = () => {
                                     <div className="form-group">
                                         <input type="password" name='password' placeholder="Password" className='form-control' onChange={changeInputHandler} />
                                         <p className='text-danger'>{passwordErr}</p>
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="password" name='re_password' placeholder="Confirm Password" className='form-control' onChange={changeInputHandler} />
+                                        <p className='text-danger'>{rePasswordErr}</p>
                                     </div>
                                     <input type="submit" value="Register" className='btn btn-warning' />
                                 </form>
