@@ -90,7 +90,7 @@ const LoginForm = () => {
                                     <input type="text" name='password' className="form-control" placeholder='Password'  onChange={inputHandler} />
                                     <p className='text-danger'>{passwordErr}</p>
                                 </div>
-                                <input type="submit" value="Login" className='btn btn-warning' />
+                                <input type="submit" value="Login" className='btn btn-warning ' />
                             </form>
                         </div>
                     </div>

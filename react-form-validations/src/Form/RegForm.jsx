@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import './RegForm.css'
 
 const RegForm = () => {
 
@@ -153,7 +154,14 @@ const RegForm = () => {
                                         <input type="password" name='re_password' placeholder="Confirm Password" className='form-control' onChange={changeInputHandler} />
                                         <p className='text-danger'>{rePasswordErr}</p>
                                     </div>
-                                    <input type="submit" value="Register" className='btn btn-warning' />
+
+                                    {
+                                        (nameErr || mobileErr || emailErr || passwordErr || rePasswordErr) ? <>
+                                            <input type="submit" value="Register" className='btn btn-warning reg-btn' disabled />
+                                        </> : <>
+                                            <input type="submit" value="Register" className='btn btn-warning reg-btn' />
+                                        </>
+                                    }
                                 </form>
                             </div>
                         </div>
