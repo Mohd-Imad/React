@@ -2,6 +2,7 @@ import React from 'react'
 import './TreeList.css'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import Popup from './Popup'
 
 const TreeList = (props) => {
     let [employees, setEmployees] = useState([])
@@ -18,7 +19,8 @@ const TreeList = (props) => {
     }
 
     let handleClick = () => {
-        alert('Please fill the field')
+        // alert('Please fill the field')
+        <Popup />
     }
 
     let getData = (e) => {
@@ -27,7 +29,7 @@ const TreeList = (props) => {
     };
 
     let filterHandler = () => {
-        if(!searchName){setFoundUser(employees)}
+        if (!searchName) { setFoundUser(employees) }
         if (searchName !== "") {
             const result = foundUser.filter((singleData) => {
                 return (singleData.name.toLowerCase().includes(searchName.toLowerCase()) || singleData.designation.toLowerCase().includes(searchName.toLowerCase()))
@@ -46,16 +48,18 @@ const TreeList = (props) => {
         <div className="container-fluid mt-5">
             <div className="row">
                 <div className="col ">
-                <div className='form-group'>
-                <input
-                    className='form-control'
-                    type="search"
-                    placeholder="Filter By Name/Role"
-                    onChange={getData}
-                    onFocus={refresh}
-                    required />
-                <input type="button" className='btn btn-primary' value='search' onClick={searchName === "" ? handleClick : filterHandler.bind(this, searchName)} /><br />
-            </div></div></div>
+                    <div className='form-group'>
+                        <input
+                            className='form-control'
+                            type="search"
+                            placeholder="Filter By Name/Role"
+                            onChange={getData}
+                            onFocus={refresh}
+                            required />
+                        <input type="button" className='btn btn-primary' value='search' onClick={searchName === "" ? handleClick : filterHandler.bind(this, searchName)} /><br />
+                    </div>
+                </div>
+            </div>
             <div className="row">
                 <div className="col-md-12">
                     {
