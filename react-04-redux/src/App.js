@@ -1,11 +1,14 @@
 import React from 'react'
-import Message from './Components/Message'
+import Counter from './Components/Counter/Counter'
+import { store } from './Components/redux/store'
+import { Provider } from 'react-redux'
 
-let App = ()=>{
+let App = () => {
 
   return <>
-    <h1>App Comp</h1>
-    <Message />
+    <Provider store={store}>
+      <Counter />
+    </Provider>
   </>
 }
 
