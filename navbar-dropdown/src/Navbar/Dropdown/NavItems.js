@@ -46,17 +46,17 @@ export const productDropdown = [
     },
 ]
 
-// export const UserDropdown = [
-//     {
-//         id : 1,
-//         title : 'Register Here',
-//         path : '/register',
-//         cName : 'dropdown-item'
-//     },
-//     {
-//         id : 2,
-//         title : 'Login',
-//         path : '/login',
-//         cName : 'dropdown-item'
-//     },
-// ]
+export const UserDropdown = [
+    {
+        id : 1,
+        title : 'Register Here',
+        path : '/register',
+        cName : 'dropdown-item'
+    },
+    {
+        id : 2,
+        title : 'Login',
+        path : '/login',
+        cName : 'dropdown-item'
+    },
+]

@@ -51,7 +51,6 @@ const Navbar = () => {
                   {item.title}
                 </Link>
                 {userDropdown ? <Dropdown /> :null }
-              
               </li>
               }
               return <li key={item.id}>

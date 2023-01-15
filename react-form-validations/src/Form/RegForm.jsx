@@ -20,7 +20,7 @@ const RegForm = () => {
 
 
     const changeInputHandler = (event) => {
-        setFormValues({ ...formValues, [event.target.name]: event.target.value })
+        setFormValues({...formValues, [event.target.name]: event.target.value})
     }
 
     useEffect(() => {
