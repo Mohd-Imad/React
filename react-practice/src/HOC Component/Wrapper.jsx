@@ -1,14 +1,13 @@
 import React from 'react'
 
-const Wrapper = () => {
+const Wrapper = (Component) => {
 
-    function NewComponent(Component) {
+    const NewComponent= ()=> {
         return <>
             <h3>Wrapper Comp</h3>
             <Component />
         </>
     }
-
     return NewComponent
 }
 
