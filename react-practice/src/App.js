@@ -8,8 +8,8 @@ const App = () => {
   return <>
     {/* <HOCComponent />
     <StatevsVariable /> */}
-    {/* <Calculator /> */}
-    <ToDoList />
+    <Calculator />
+    {/* <ToDoList /> */}
   </>
 }
 
